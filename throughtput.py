@@ -71,7 +71,12 @@ for i in range(TOTAL_TRANSACTIONS):
     # ----------------------------
 
     tx_start = time.time()
-    input_df = pd.DataFrame(features, columns=features)
+    col_names = [
+        'Debited Amt', 'hour', 'time_gap_sec', 'velocity_1h',
+        'balance_drain_pct', 'ip_change_flag', 'location_change_flag',
+        'Amount_Spike_Flag'
+    ]
+    input_df = pd.DataFrame(features, columns=col_names)
     scaled_features = scaler.transform(input_df)
 
     score = model.decision_function(scaled_features)
